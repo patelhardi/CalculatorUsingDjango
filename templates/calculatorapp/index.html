@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -33,17 +34,38 @@
         </div>
       </nav>
 
-      <div class="container-fluid">
+      <div class="container-fluid" style="margin: 0 auto;">
+          {% if error %}
+          <div class="row">
+            <div class="col-md-6" style="margin: 0 auto;">
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if result %}
+          <div class="row">
+            <div class="col-md-6" style="margin: 0 auto;">
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{q}} = {{ans}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+          {% endif %}
           <div class="row">
               <div class="col-md-6" style="margin: 1rem auto 0 auto;">
+                  <img class="img-fluid" src="{% static 'calculator.jpg' %}">
                   <div class="card">
                       <div class="card-body">
-                            <form action="#" method="GET">
+                            <form action="{% url 'submitquery' %}" method="GET">
                                 <div class="form-group" style="margin: 5px 0;">
                                     <input type="search" class="form-control" name="query" id="query">
                                 </div>
-                                <input type="submit" class="btn btn-primary">
-                                <input type="reset" class="btn btn-primary">
+                                <input type="submit" class="btn btn-success">
+                                <input type="reset" class="btn btn-danger">
                             </form>
                       </div>
                   </div>
@@ -51,7 +73,7 @@
           </div>
       </div>
 
-      <footer class="fixed-bottom bg-light" style="padding: 10px;">
+      <footer class="bg-light" style="padding: 10px;">
           <p>&copy; Hardi Patel, 2022</p>
       </footer>
       
