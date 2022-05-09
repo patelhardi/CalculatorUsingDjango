@@ -7,4 +7,4 @@ A front-end build using HTMl, CSS and BootStrap
 2. pip install django
 3. django-admin startproject projectname
 4. python manage.py runserver
-5. visit localhost/calculatorapp
+5. visit http://127.0.0.1:8000/calculatorapp
